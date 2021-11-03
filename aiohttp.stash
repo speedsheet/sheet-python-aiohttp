@@ -1,0 +1,833 @@
+# <#>aiohttp<><> SpeedSheet
+<b>What you need, faster.<>
+
+<*>Use <b>Search<> (above) For Realtime Answers
+Answers Get Right To The Point<>
+
+
+
+# Online Links
+
+
+
+### aiofiles Documents
+<l>https://docs.aiohttp.org/en/stable/<>
+
+
+
+### aiofiles Library on PyPi
+<l>https://pypi.org/project/aiofiles/<>
+
+
+
+# Library
+
+
+## Install Library - pip
+
+<cb>pip install aiohttp<>
+
+Including Speedup Libraries (chardet, aiodns):
+
+<cb>pip install aiohttp[speedups]<>
+@
+@ command, commandline
+
+
+
+## Install Library - pip requirements.txt
+
+requirements.txt:
+
+<cb>aiohttp<>
+
+Including Speedup Libraries (chardet, aiodns):
+
+<cb>aiohttp[speedups]<>
+
+Command:
+
+<cb>pip install -r requiremets.txt<>
+@
+@ command, commandline
+
+
+
+## Program - Import
+
+<cb>import aiohttp<>
+
+
+
+# Request Basics - POST / JSON
+
+Send and Receive JSON:
+
+<cb>from asyncio import get_event_loop
+from aiohttp import ClientSession
+
+async def main():
+
+    <v>url<> = "https://httpbin.org/post"
+
+    <v>request_data<> = {
+            "field-1": "value 1",
+            "field-2": "value 2"}
+
+    async with ClientSession() as <v>session<>:
+
+        <v>response<> = await <v>session<>.post(<v>url<>, json = <v>request_data<>)
+        <v>response_data<> = await <v>response<>.json()
+
+        print("url:", <v>response<>.url)
+        print("status:", <v>response<>.status)
+        print("JSON:", <v>response_data<>)
+
+loop = get_event_loop()
+loop.run_until_complete(main())<>
+@
+@ example, hello world, hello-world
+
+
+
+# Send Request Methods
+@
+@ make, call url, commands, verbs
+
+
+
+### Send Get
+
+<cb>= await <v>session<>.get(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.get(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get('https://httpbin.org/get')<>
+@
+@ ClientSession.get(), .get()
+
+
+
+### Send Get - With Parameters
+
+Use <c>params<>:
+
+<cb>= await <v>session<>.get(<v>url<>, params = <v>params_dict<>)<>
+
+Example:
+
+<cb><#># Sends: https://httpbin.org/get?param_1=value+1&param_2=value+2<>
+
+from aiohttp import ClientSession
+
+<v>url<> = "https://httpbin.org/get"
+
+<v>params<> = {
+    "<v>param_1<>": "value 1",
+    "<v>param_2<>": "value 2"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get(<v>url<>, params = <v>params<>)<>
+@
+@ ClientSession.get(), .get()
+
+
+
+### Send Post
+
+<cb>= await <v>session<>.post(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.post(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.post('https://httpbin.org/post')<>
+@
+@ ClientSession.post(), .post()
+
+
+
+### Send Put
+
+<cb>= await <v>session<>.put(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.put(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.put('https://httpbin.org/put')<>
+@
+@ ClientSession.put(), .put()
+
+
+
+### Send Patch
+
+<cb>= await <v>session<>.patch(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.patch(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.patch('https://httpbin.org/patch')<>
+@
+@ ClientSession.patch(), .patch()
+
+
+
+### Send Delete
+
+<cb>= await <v>session<>.delete(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.delete(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.delete('https://httpbin.org/delete')<>
+@
+@ ClientSession.delete(), .delete()
+
+
+
+### Send Head
+
+<cb>= await <v>session<>.head(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.head(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.head('https://httpbin.org/head')<>
+@
+@ ClientSession.head(), .head()
+
+
+
+### Send Options
+
+<cb>= await <v>session<>.options(<v>url<>)<>
+
+Or
+
+<cb>async with <v>session<>.options(<v>url<>) as <v>response:<>
+    <v>...<><>
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.options('https://httpbin.org/options')<>
+@
+@ ClientSession.options(), .options()
+
+
+
+# Request Properties
+@
+@ send
+
+
+
+### Set Cookies
+
+<cb><v>session<>.<v>command<>(<v>url<>, cookies = <v>cookies_dict<>)<>
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+<v>cookies<> = {"<v>cookie-name<>": "<v>cookie-value<>"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = <v>session<>.get("https://httpbin.org/cookies", cookies = <v>cookies<>)<>
+
+
+
+### Set Headers
+
+<cb><v>session<>.<v>command<>(<v>url<>, headers = <v>headers_dict<>)<>
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+<v>headers<> = {"Content-type": "text/plain"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = <v>session<>.get("https://httpbin.org/get", headers = <v>headers<>)<>
+
+
+
+### Set Timeout On Session
+
+Use <c>timeout<>:
+
+<cb>ClienSession(timeout = ClientTimeout(total = <v>timeout_seconds<>))<>
+
+With Imports:
+
+<cb>from aiohttp import ClientSession
+from aiohttp import ClientTimeout
+
+ClienSession(timeout = ClientTimeout(total = <v>timeout_seconds<>))<>
+
+
+Throws <c>asyncio.exceptions.TimeoutError<> on timeout.
+
+
+Example:
+
+<cb><#># 5 Second Timeout:<>
+
+from aiohttp import ClientSession
+from aiohttp import ClientTimeout
+from asyncio.exceptions import TimeoutError
+
+<v>timeout<> = ClientTimeout(total = <v>5<>)
+
+async with ClienSession(timeout = <v>timeout<>) as <v>session<>:
+
+    try:
+
+        <v>url<> = 'https://www.google.com:81'
+        <v>response<> = await <v>session<>.get(<v>url<>)
+
+    except TimeoutError:
+
+        print ("Timed out.")<>
+
+
+
+### Set Timeout On Command
+
+<cb><v>session<>.<v>command<>(<v>url<>, timeout=<v>timeout_seconds<>)<>
+
+
+Throws <c>asyncio.exceptions.TimeoutError<> on timeout.
+
+
+Example:
+
+<cb><#># 5 Second Timeout:<>
+
+from aiohttp import ClientSession
+from asyncio.exceptions import TimeoutError
+
+async with ClientSession() as <v>session<>:
+
+    try:
+
+        <v>url<> = 'https://www.google.com:81'
+        <v>response<> = await <v>session<>.get(<v>url<>, timeout = <v>5<>)
+
+    except TimeoutError:
+
+        print ("Timed out.")<>
+
+@
+@ time out
+
+
+
+### Set URL Parameters
+
+<cb>= await <v>session<>.<v>command<>(<v>url<>, params = <v>params_dict<>)<>
+
+Or
+
+<cb>async with <v>session<>.<v>command<>(<v>url<>, params = <v>params_dict<>) as <v>response<>:
+    <v>...<><>
+
+
+Example:
+
+<cb><#># Sends: https://httpbin.org/post?param_1=value+1&param_2=value+2<>
+
+<v>url<> = "https://httpbin.org/post"
+
+<v>params<> = {
+        "<v>param_1<>": "value 1",
+        "<v>param_2<>": "value 2"}
+
+<v>response<> = <v>session<>.post(<v>url<>, params = <v>params<>)<>
+@
+@ post, put, patch, delete, head, options
+
+
+
+# Send Body / Payload
+
+The following applies to:
+
+    <c>Post<>
+    <c>Put<>
+    <c>Patch<>
+@
+@ send as, post, put, patch
+
+
+
+### Send as Text
+
+<cb><v>session<>.<v>command<>(<v>url<>, data = '<v>payload text<>')<>
+
+
+Sets <c>Content-Type<> to '<c>text/plain; charset=utf-8<>'
+
+
+
+### Send as Binary
+
+<cb><v>session<>.<v>command<>(<v>url<>, data = b'<v>binary_data<>')<>
+
+
+Sets <c>Content-Type<> to '<c>application/octet-stream<>'
+@
+@ bytes
+
+
+
+### Send as Form Data
+
+<cb><v>form_data<> = {
+        "<v>param 1<>": "<v>value 1<>",
+        "<v>param 2<>": "<v>value 2<>"}
+
+<v>session<>.<v>command<>(<v>url<>, data = <v>form_data<>)<>
+
+
+Pass in form data as a combination of dicts and tuples as needed.
+Content-Type is set to '<c>application/x-www-form-urlencoded<>'
+
+
+Example:
+
+<cb><v>url<> = "https://httpbin.org/post"
+
+<v>form_data<> = {
+        "<v>param 1<>": "value 1",
+        "<v>param 2<>": "value 2"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.post(<v>url<>, data = <v>form_data<>)<>
+@
+@ form-encoded
+
+
+
+### Send As JSON
+
+<cb><v>data_dict<> = {
+        "<v>param 1<>": "<v>value 1<>",
+        "<v>param 2<>": "<v>value 2<>"}
+
+<v>session<>.<v>command<>(<v>url<>, json = <v>data_dict<>)<>
+
+
+Pass in data as a combination of dicts and tuples as needed.
+Content-Type is set to '<c>application/json<>'
+
+
+Example:
+
+<cb><v>url<> = "https://httpbin.org/post"
+
+<v>data<> = {
+        "<v>param_1<>": "value 1",
+        "<v>param_2<>": "value 2"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await  <v>session<>.post(<v>url<>, json = <v>data<>)<>
+
+
+
+### Attach Files
+
+<cb><v>files<> = FormData()
+
+<v>files<>.add_field('<v>file<>',
+        <v>binary_data<>,
+        filename='<v>file_name<>')<>
+
+<cb><v>response<> = await <v>session<>.post(<v>url<>, data = files)<>
+
+Add From File:
+
+<cb><v>files<>.add_field('<v>file<>',
+        open('<v>file_name<>', 'rb'),
+        filename='<v>file_name<>')<>
+
+Set File Type:
+
+<cb><v>files<>.add_field('<v>file<>',
+        <v>binary_data<>,
+        filename='<v>file_name<>',
+        content_type='<v>content-type<>')<>
+
+Multiple Files:
+
+<cb><v>files<>.add_field('<v>file-1<>',
+        <v>binary_data<>,
+        filename='<v>file_name_1<>')
+
+<v>files<>.add_field('<v>file-2<>',
+        <v>binary_data<>,
+        filename='<v>file_name_2<>')<>
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+from aiohttp import FormData
+
+<v>files<> = FormData()
+
+<v>files<>.add_field('<v>llama_field<>',
+        open('<v>llama.jpg<>', 'rb'),
+        filename='<v>llama.jpg<>',
+        content_type='<v>image/jpeg<>')
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.post(<v>url<>, data = <v>files<>)<>
+
+
+
+# Response Content
+@
+@ get
+
+
+
+### Response Content - As Text
+
+<cb>= await <v>response<>.text()<>
+
+
+Returns: <c>str<>
+@
+@ response.text, .text
+
+
+
+### Response Content - As JSON
+
+<cb>= await <v>response<>.json()<>
+
+
+Returns: <c>dict<>
+
+
+
+### Response Content - As Binary
+
+<cb>= await <v>response<>.read()<>
+
+
+Returns: <c>bytes<>
+@
+@ response.read(), .read(), bytes
+
+
+
+### Response Content - Size
+
+<cb>= len(await <v>response<>.read())<>
+@
+@ count, length, len()
+
+
+
+# Response Properties
+
+
+
+### Response - Get Cookies
+
+<cb>= <v>response<>.cookies<>
+
+Returns: <c>(http.cookies.SimpleCookie)<>
+
+Treat like a <c>dict<>.
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get('https://httpbin.org/get')
+
+
+    <#># Get Cookie Value:<>
+
+    <v>value<> = <v>response<>.cookies['<v>cookie-name<>']
+
+
+    <#># Print All:<>
+
+    for <v>name<>, <v>value<> in <v>response<>.cookies.items():
+        print(<v>name<>, '=', <v>value<>)<>
+@
+@ response.cookies, .cookies
+
+
+
+### Response - Get Headers
+
+<cb>= <v>response<>.headers<>
+
+
+Returns: <c>multidict._multidict.CIMultiDictProxy<>
+
+Treat like a <c>dict<>.
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get('https://httpbin.org/get')
+
+
+    <#># Get Heading Value:<>
+
+    <v>content_type<> = <v>response<>.headers['<v>content-type<>']
+
+
+    <#># Print All:<>
+
+    for name, value in <v>response<>.headers.items():
+        print(f'{name} = {value}')<>
+@
+@ response.headers, .headers
+
+
+
+### Response - Get Status
+
+<cb>= <v>response<>.status<>
+@
+@ response.status, response.status_code, .status, .status_code, get
+
+
+
+### Response - Get URL
+
+<cb>= <v>response<>.url<>
+@
+@ get, response.url, .url
+
+
+
+# Response Operations
+
+
+### Response - Raise Error
+
+<cb><v>response<>.raise_for_status()<>
+
+Raises: <c>aiohttp.client_exceptions.ClientResponseError<>
+
+
+Will raise <c>ClientResponseError<>  for 400 and 500 level error codes.
+
+
+All HTTP Codes:
+<l>/s/http?search=http+response+codes<>
+
+HTTP Error Codes:
+<l>/s/http?search=http+response+error<>
+@
+@ response.raise_for_status(), .raise_for_status(), error handling
+
+
+
+### Response - Handle Status 400/500 Errors
+
+<cb>from aiohttp.client_exceptions import ClientResponseError
+
+try:
+
+    <v>response<> = await <v>session<>.get(<v>url<>)
+    <v>response<>.raise_for_status()
+
+except ClientResponseError as <v>exception<>:
+
+    <v>...<><>
+
+
+<c>.raise_for_status()<> will raise <c>ClientResponseError<> for any 400 or 500 level status.
+
+
+All HTTP Codes:
+<l>/s/http?search=http+response+codes<>
+
+HTTP Error Codes:
+<l>/s/http?search=http+response+error<>
+
+
+Example:
+
+<cb>from aiohttp.client_exceptions import ClientResponseError
+
+try:
+
+    async with ClientSession() as <v>session<>:
+
+        <v>url<> = "https://httpbin.org/status/503"
+        <v>response<> = await <v>session<>.get(<v>url<>)
+        <v>response<>.raise_for_status()
+
+except ClientResponseError as <v>exception<>:
+
+    <v>status<> = <v>exception<>.status
+    <v>message<> = <v>exception<>.message
+    <v>url<> = <v>exception<>.args[0].url<>
+@
+@ error handling, status code, exceptions, .raise_for_status(), ClientResponseError
+
+
+
+### Response - Handle Connection Errors
+
+<cb>from aiohttp.client_exceptions import ClientConnectorError
+
+try:
+
+    <v>response<> = await <v>session<>.get(<v>url<>)
+
+except ClientConnectorError as <v>exception<>:
+
+    <v>...<><>
+
+
+<c>ClientConnectorError<> is raised if the connection fails.
+@
+@ error handling, exceptions ClientConnectorError
+
+
+
+### Response - Handle Timeout
+
+<cb>from asyncio.exceptions import TimeoutError
+
+try:
+
+    <v>response<> = await <v>session<>.get(<v>url<>)
+
+except TimeoutError as <v>exception<>:
+
+    <v>...<><>
+
+
+<c>TimeoutError<> is raised if the connection times out.
+The default timeout is 75 seconds.
+
+
+Example:
+
+<cb>from asyncio.exceptions import TimeoutError
+
+try:
+
+    async with ClientSession() as <v>session<>:
+
+        <v>url<> = "https://www.google.com:81"
+        <v>response<> = await <v>session<>.get(<v>url<>)
+
+except TimeoutError as <v>exception<>:
+
+    print("Timed out.")<>
+@
+@ error handling, exceptions, TimeoutError
+
+
+
+### Response - Handle All Errors
+
+The Full Version
+
+<cb>from aiohttp.client_exceptions import ClientConnectorError
+from aiohttp.client_exceptions import ClientResponseError
+from asyncio.exceptions import TimeoutError
+
+try:
+
+    <v>response<> = await <v>session<>.get(<v>url<>, timeout = <v>timeout<>)
+    <v>response<>.raise_for_status()
+
+except ClientResponseError as <v>exception<>:
+
+    <#># 400 or 500 Status Code<>
+    <v>...<>
+
+except ClientConnectorError as <v>exception<>:
+
+    <#># Connection Failed<>
+    <v>...<>
+
+except TimeoutError:
+
+    <#># Connection Timed Out<>
+    <v>...<><>
+@
+@ error handling, status code, exceptions, timeout, full, .raise_for_status()
+@ ClientResponseError, ClientConnectorError, TimeoutError
+
+
+
+# Terms
+
+
+
+### Timeout - Default
+The default timeout is 75 seconds.
+
+It will raise <c>TimeoutError<>.
+@
+@ time out
+
+
+
