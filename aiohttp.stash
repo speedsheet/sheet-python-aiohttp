@@ -1,9 +1,10 @@
 # <#>aiohttp<><> SpeedSheet
 <b>Find what you need, faster.<>
 
-<*>Use <b>Search<> (above) For Realtime Answers
-Answers Get Right To The Point<>
+The asyncronous http request library for Python.
 
+
+<image "aiohttp-example.webp">
 
 
 # Online Links
@@ -59,11 +60,14 @@ Command:
 
 
 
-# Request Basics - POST / JSON
+# Request Basics
+
+
+### POST / JSON - Basic Request
 
 Send and Receive JSON:
 
-<cb>from asyncio import get_event_loop
+<cb>from asyncio import run
 from aiohttp import ClientSession
 
 async def main():
@@ -83,8 +87,7 @@ async def main():
         print("status:", <v>response<>.status)
         print("JSON:", <v>response_data<>)
 
-loop = get_event_loop()
-loop.run_until_complete(main())<>
+run(main())<>
 @
 @ example, hello world, hello-world
 
