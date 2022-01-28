@@ -4,20 +4,15 @@
 The asyncronous http request library for Python.
 
 
-<image "aiohttp-example.webp">
-
-
 # Online Links
 
 
-
-### aiofiles Documents
+### aiohttp Documents
 <l>https://docs.aiohttp.org/en/stable/<>
 
 
-
-### aiofiles Library on PyPi
-<l>https://pypi.org/project/aiofiles/<>
+### aiohttp Library on PyPi
+<l>https://pypi.org/project/aiohttp/<>
 
 
 
