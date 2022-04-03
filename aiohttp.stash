@@ -646,6 +646,8 @@ async with ClientSession() as <v>session<>:
 ### Response - Get Status
 
 <cb>= <v>response<>.status<>
+
+Returns: <c>int<>
 @
 @ response.status, response.status_code, .status, .status_code, get
 
