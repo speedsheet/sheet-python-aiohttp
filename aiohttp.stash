@@ -10,7 +10,13 @@ This is interactive <b>aiohttp<> cheat sheet. aiohttp is a powerful but simple t
 <link "?q=examples-only">Examples<><>
 
 <*><link "?q=online-only">Online Docs<>
-<link "?q=ref-only">Reference<><><><col>             <><col><b>Request<>
+<link "?q=ref-only">Reference<><>
+
+<b>Related SpeedSheets<>
+
+<*><l "python">Python<>
+<l "beautiful_soup">Beautiful Soup<>
+<l "requests">Requests<><><><col>             <><col><b>Request<>
 
 <*><link "?q=request-only">Requests<>
 <link "?q=request-verbs-only">Request Actions<>
@@ -518,7 +524,7 @@ Example:
 <v>cookies<> = {"<v>cookie-name<>": "<v>cookie-value<>"}
 
 async with ClientSession() as <v>session<>:
-    <v>response<> = <v>session<>.get("https://httpbin.org/cookies", cookies = <v>cookies<>)<>
+    <v>response<> = await <v>session<>.get("https://httpbin.org/cookies", cookies = <v>cookies<>)<>
 
 
 
@@ -534,7 +540,7 @@ Example:
 <v>headers<> = {"Content-type": "text/plain"}
 
 async with ClientSession() as <v>session<>:
-    <v>response<> = <v>session<>.get("https://httpbin.org/get", headers = <v>headers<>)<>
+    <v>response<> = await <v>session<>.get("https://httpbin.org/get", headers = <v>headers<>)<>
 
 
 
@@ -629,7 +635,8 @@ Example:
         "<v>param_1<>": "value 1",
         "<v>param_2<>": "value 2"}
 
-<v>response<> = <v>session<>.post(<v>url<>, params = <v>params<>)<>
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.post(<v>url<>, params = <v>params<>)<>
 @
 @ post, put, patch, delete, head, options
 
@@ -923,6 +930,50 @@ except TimeoutError:
 @
 @ error handling, status code, exceptions, timeout, full, .raise_for_status()
 @ ClientResponseError, ClientConnectorError, TimeoutError
+
+
+
+# How To
+@
+@ how-to-only
+
+
+### Set Header - Content Type
+
+<cb><v>headers<> = {"Content-type": "<v>text/plain<>"}<>
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+<v>headers<> = {"Content-type": "<v>text/plain<>"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get("https://httpbin.org/get", headers = <v>headers<>)<>
+
+
+See: <l "http?q=mime-types-only">Content / Mime Types<>
+@
+@ mime, content-type
+
+
+
+### Set Header - User Agent
+
+<cb><v>headers<> = {"User-Agent": "<v>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<>"}<>
+
+
+Example:
+
+<cb>from aiohttp import ClientSession
+
+<v>headers<> = {"User-Agent": "<v>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<>"}
+
+async with ClientSession() as <v>session<>:
+    <v>response<> = await <v>session<>.get("https://httpbin.org/get", headers = <v>headers<>)<>
+@
+@ user-agent
 
 
 
