@@ -961,7 +961,7 @@ See: <l "http?q=mime-types-only">Content / Mime Types<>
 
 ### Set Header - User Agent
 
-<cb><v>headers<> = {"User-Agent": "<v>Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0<>"}<>
+<cb><v>headers<> = {"User-Agent": "<v>agent_signature<>"}<>
 
 
 Example:
